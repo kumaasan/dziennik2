@@ -8,9 +8,10 @@
                 <input
                     wire:model="email"
                     type="email"
-                    class="w-full px-4 py-2 border border-border rounded-lg bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
+                    class="w-full px-4 py-2 border border-border rounded-lg bg-white dark:bg-[#1f1f22] text-black dark:text-white  focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all @error('email') ring-2 ring-red-500 dark:border-red-500 border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500 @enderror"
                     placeholder="twoj@email.com"
                 />
+                @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
             <div>
@@ -18,9 +19,10 @@
                 <input
                     wire:model="password"
                     type="password"
-                    class="w-full px-4 py-2 border border-border rounded-lg bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
+                    class="w-full px-4 py-2 border border-border rounded-lg bg-white dark:bg-[#1f1f22] text-black dark:text-white  focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all @error('password') ring-2 ring-red-500 dark:border-red-500 border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500 @enderror"
                     placeholder="••••••••"
                 />
+                @error('password') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
             <div class="flex items-center justify-between">

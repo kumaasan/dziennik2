@@ -12,5 +12,6 @@ return [
     'email' => 'Pole musi być poprawnym adresem e-mail.',
     'unique' => 'Pole jest już zajęte.',
     'confirmed' => 'Hasła się nie zgadzają',
-    'required_with' => 'Pole jest wymagane.'
+    'required_with' => 'Pole jest wymagane.',
+    'exists' => 'Wartość pola :attribute nie została znaleziona w bazie danych.',
 ];

@@ -11,11 +11,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @fluxAppearance
 </head>
-<body class="bg-zinc-800 flex h-screen w-full">
+<body class="dark:bg-zinc-800 bg-[#EFEFEF] flex w-full">
+<div id="sidebar"
+    class="fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 lg:relative lg:translate-x-0 lg:block-translate-x-full">
     <x-sidebar/>
-    <div class="flex items-center justify-center w-full h-screen ">
-        @yield('content')
-    </div>
+</div>
+<main class="flex-1 px-6">
+    @yield('content')
+</main>
 @fluxScripts
 </body>
 </html>

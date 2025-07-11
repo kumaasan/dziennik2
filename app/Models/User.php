@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getMaskedEmailAttribute(){
+        $email = strpos($this->email, '@');
+
+        return substr($this->email, 0, 3)
+               . str_repeat('*', $email - 1)
+               . substr($this->email, $email);
+    }
 }

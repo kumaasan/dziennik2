@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Illuminate\Validation\ValidationException;
 
 class Login extends Component
 {
@@ -28,7 +29,11 @@ class Login extends Component
             'password' => $validated['password'],
         ];
 
-        auth()->attempt($credentials, $this->rememberMe);
+        if(!auth()->attempt($credentials, $this->rememberMe)){
+            throw ValidationException::withMessages([
+                'password' => __('auth.failed'),
+            ]);
+        }
 
         redirect()->route('home');
     }

@@ -1,4 +1,4 @@
-<div class="sticky top-0 flex h-screen flex-col gap-y-5 overflow-y-auto bg-[#D9D9D9] dark:bg-[#18181B] px-6 pb-4">
+<div class="flex grow flex-col gap-y-5  bg-[#D9D9D9] dark:bg-[#18181B] px-6 pb-4">
     <div class="flex h-16 shrink-0 items-center">
         <p class="text-black dark:text-white">dziennik2</p>
     </div>
@@ -78,10 +78,10 @@
                     Ustawienia
                 </a>
                 @auth()
-                    <a href="{{ route('logout') }}" class="capitalize group -mx-2 flex gap-x-3 rounded-md p-2 font-semibold leading-6 text-black dark:text-white hover:bg-zinc-200 dark:hover:bg-[#27272A]">
+                    <div class="capitalize group -mx-2 flex gap-x-3 rounded-md p-2 font-semibold leading-6 text-black dark:text-white hover:bg-zinc-200 dark:hover:bg-[#27272A]">
                         <span class="flex size-7 shrink-0 items-center justify-center rounded-lg border border-gray-500 bg-gray-600 text-[0.625rem] font-medium text-white">{{ substr(Auth::user()->name ,0, 1) }}</span>
                         {{Auth::user()->name}}
-                    </a>
+                    </div>
                 @endauth
                 @guest
                     <a href="{{ route('login') }}" class="capitalize group -mx-2 flex gap-x-3 rounded-md p-2 font-semibold leading-6 text-black dark:text-white hover:bg-zinc-200 dark:hover:bg-[#27272A]">

@@ -18,3 +18,5 @@ Route::get('/logout', [LogOutController::class, 'logout'])->name('logout')->midd
 Route::delete('/delete-account', [AccpuntController::class, 'deleteAccount'])->name('delete.account')->middleware('auth');
 
 Route::view('settings', 'settings')->name('settings')->middleware('auth');
+
+Route::view('/subjects', 'subjects.subject' )->name('subjects')->middleware('auth');

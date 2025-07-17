@@ -20,3 +20,5 @@ Route::delete('/delete-account', [AccpuntController::class, 'deleteAccount'])->n
 Route::view('settings', 'settings')->name('settings')->middleware('auth');
 
 Route::view('/subjects', 'subjects.subject' )->name('subjects')->middleware('auth');
+
+Route::view('/subjects/create', 'subjects.addNewSubject')->name('subjects.create')->middleware('auth');

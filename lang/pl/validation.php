@@ -10,7 +10,7 @@ return [
         'string' => 'Pole musi mieć co najmniej :min znaków.',
     ],
     'email' => 'Pole musi być poprawnym adresem e-mail.',
-    'unique' => 'Pole jest już zajęte.',
+    'unique' => 'Pole już istnieje.',
     'confirmed' => 'Hasła nie są takie same.',
     'required_with' => 'Pole jest wymagane.',
     'exists' => 'Wartość pola :attribute nie została znaleziona w bazie danych.',

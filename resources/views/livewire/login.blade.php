@@ -3,6 +3,7 @@
         <h2 class="text-2xl font-bold mb-6 text-center">Logowanie</h2>
 
         <form wire:submit.prevent="login" class="space-y-4">
+            @csrf
             <div>
                 <label class="block text-sm font-medium mb-1">Email</label>
                 <input

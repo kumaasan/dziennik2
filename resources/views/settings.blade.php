@@ -3,8 +3,9 @@
 @section('title', 'Ustawienia')
 
 @section('content')
-    <div class="flex items-center justify-start flex-col w-full h-dvh lg:pl-8 py-3 gap-y-10">
-        <h2 class="font-bold pt-2 text-3xl">Ustawienia</h2>
+    <div class="flex flex-col items-center justify-start w-full h-screen pt-6 lg:pl-8 gap-y-10">
+        <p class="text-3xl capitalize font-bold">Ustawienia</p>
+
 
         <div class="border border-accent w-full rounded-xl">
             <p class="text-xl py-5 font-semibold px-7">Informacje o koncie</p>

@@ -4,7 +4,7 @@
         <h2 class="text-2xl font-bold mb-6 text-center text-black dark:text-white">Rejestrowanie</h2>
 
         <form wire:submit.prevent="register" class="space-y-4">
-
+            @csrf
             <div>
                 <label class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Imię</label>
                 <input

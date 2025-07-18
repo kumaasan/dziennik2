@@ -11,12 +11,19 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
             </a>
-
         </div>
 
-        <div class="flex w-full border-2 border-white gap-x-10">
-            <div class="w-1/2 bg-yellow-300 ">no elo melo</div>
-            <div class="w-1/2 bg-blue-600 ">no elo melo</div>
+        <div class="flex w-full border-2 border-white">
+            <div class="grid grid-cols-2 gap-5 w-full">
+                @foreach($user->subjects as $subject)
+                    <div class="bg-red-500 text-white">{{ $subject->name }}</div>
+                    <p>
+                        @foreach($subject->grade as $grade)
+                            {{$grade->grade}}
+                        @endforeach
+                    </p>
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection

@@ -8,14 +8,16 @@
         <div class="flex w-full items-center justify-center gap-20">
             <p class="text-3xl capitalize font-bold">Dodaj nowy przedmiot</p>
         </div>
+        <div class="flex items-center justify-center gap-y-25 flex-col w-full h-dvh ">
+            <div class="max-w-2xl w-full bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
+                <livewire:add-new-subject />
+            </div>
 
-        <div class="max-w-2xl w-full bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
-           <livewire:add-new-subject />
+            <div class="max-w-2xl w-full bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
+                <livewire:delete-subject/>
+            </div>
         </div>
 
-        <div class="max-w-2xl w-full bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
-            <livewire:delete-subject/>
-        </div>
     </div>
 
 @endsection

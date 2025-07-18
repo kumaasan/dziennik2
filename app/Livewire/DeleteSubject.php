@@ -6,8 +6,8 @@ use App\Models\Subject;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class DeleteSubject extends Component
-{
+class DeleteSubject extends Component {
+
     #[Rule(['required', 'exists:subjects,id'])]
     public $subjectId;
 
@@ -16,37 +16,32 @@ class DeleteSubject extends Component
 
     protected $listeners = ['subject-added' => 'refreshSubjects'];
 
-    public function mount()
-    {
-        $this->subjects = $this->getAllSubjects();
-        $this->subjectId     = $this->subjects->first();
+    public function mount(){
+        $this->subjects  = $this->getAllSubjects();
+        $this->subjectId = $this->subjects->first();
     }
 
-    public function getAllSubjects()
-    {
+    public function getAllSubjects(){
         return Subject::orderBy('name')->pluck('id', 'name');
     }
 
-    public function refreshSubjects()
-    {
+    public function refreshSubjects(){
         $this->subjects = $this->getAllSubjects();
     }
 
-    public function deleteSubject()
-    {
+    public function deleteSubject(){
         $validated = $this->validate();
 
         $subject = Subject::find($validated['subjectId']);
 
-        if ($subject) {
+        if ($subject){
             $subject->delete();
             $this->dispatch('subject-deleted');
             $this->refreshSubjects();
         }
     }
-    public function render()
-    {
+
+    public function render(){
         return view('livewire.delete-subject');
     }
 }
-

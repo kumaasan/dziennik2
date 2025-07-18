@@ -53,4 +53,8 @@ class User extends Authenticatable
                . str_repeat('*', $email - 1)
                . substr($this->email, $email);
     }
+
+    public function subjects(){
+        return $this->hasMany(Subject::class);
+    }
 }

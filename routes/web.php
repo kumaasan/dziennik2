@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccpuntController;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
-
 
 Route::view('/login', 'auth.login')->name('login');
 
@@ -19,6 +19,6 @@ Route::delete('/delete-account', [AccpuntController::class, 'deleteAccount'])->n
 
 Route::view('settings', 'settings')->name('settings')->middleware('auth');
 
-Route::view('/subjects', 'subjects.subject' )->name('subjects')->middleware('auth');
+Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects')->middleware('auth');
 
 Route::view('/subjects/create', 'subjects.addNewSubject')->name('subjects.create')->middleware('auth');

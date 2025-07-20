@@ -4,20 +4,16 @@
 
 @section('content')
     <div class="flex flex-col items-center justify-start w-full h-screen pt-6 lg:pl-8 gap-10">
-        @auth
-            <p class="text-3xl capitalize font-bold">Witaj {{ Auth::user()->name }}!</p>
-        @endauth
-        @guest
-                <p class="text-3xl capitalize font-bold">Konto gościa</p>
-        @endguest
+        <div class="flex flex-col items-center justify-center lg:gap-8 gap-10">
+            @auth
+                <p class="text-3xl capitalize font-bold">Witaj {{ Auth::user()->name }}!</p>
 
-        <div class="w-full flex items-center justify-center gap-4 ">
-            <div class="w-1/2 rounded bg-yellow-500 h-36"></div>
-            <div class="w-1/2 rounded bg-blue-800 h-36"></div>
-        </div>
-        <div class="w-full flex items-center justify-center gap-4">
-            <div class="w-1/2 rounded bg-yellow-500 h-36"></div>
-            <div class="w-1/2 rounded bg-blue-800 h-36"></div>
+                <x-fav-subject-home-page/>
+            @endauth
+            @guest
+                <p class="text-3xl capitalize font-bold">Konto gościa</p>
+                <p class="text-xl">Konto gościa nie posiada funkcji ulubionych przedmiotów</p>
+            @endguest
         </div>
     </div>
 @endsection

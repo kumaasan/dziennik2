@@ -15,8 +15,8 @@ class AddNewSubject extends Component {
     public function addSubject(){
         $validated = $this->validate();
 
-        $subject          = new Subject();
-        $subject->name    = $validated[',name'];
+        $subject = new Subject();
+        $subject->name = $validated['name'];
         $subject->user_id = auth()->user()->id;
         $subject->save();
 

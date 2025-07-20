@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class OffCanvasSidebar extends Component {
+class FavSubjectHomePage extends Component {
 
     public $favoriteSubjects;
 
@@ -17,8 +17,10 @@ class OffCanvasSidebar extends Component {
         $this->favoriteSubjects = $user ? $subjectService->getFavouriteSubjects($user->id) : collect();
     }
 
-
+    /**
+     * Get the view / contents that represent the component.
+     */
     public function render(): View|Closure|string{
-        return view('components.off-canvas-sidebar');
+        return view('components.fav-subject-home-page');
     }
 }

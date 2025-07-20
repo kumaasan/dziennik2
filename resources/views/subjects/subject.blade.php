@@ -13,17 +13,24 @@
             </a>
         </div>
 
-        <div class="flex w-full border-2 border-white">
-            <div class="grid grid-cols-2 gap-5 w-full">
-                @foreach($user->subjects as $subject)
-                    <div class="bg-red-500 text-white">{{ $subject->name }}</div>
-                    <p>
+        @forelse($user->subjects as $subject)
+            <div class="relative max-w-5xl w-full bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
+                <div class="absolute top-2 right-4">
+                    <span class="text-yellow-400 text-xl">★</span>
+                </div>
+
+                <div class="grid grid-cols-2 items-center gap-5 w-full">
+                    <div class="text-white text-xl capitalize">{{ $subject->name }}</div>
+                    <div class="flex flex-wrap items-center gap-2">
                         @foreach($subject->grade as $grade)
-                            {{$grade->grade}}
+                            <div class="rounded-full border-2 border-white p-2 text-white">{{ $grade->grade }}</div>
                         @endforeach
-                    </p>
-                @endforeach
+                    </div>
+                </div>
             </div>
-        </div>
+        @empty
+            <p class="text-xl">Jeszcze żadne przedmioty nie zostały dodane</p>
+        @endforelse
+
     </div>
 @endsection

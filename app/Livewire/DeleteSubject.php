@@ -17,7 +17,7 @@ class DeleteSubject extends Component {
     protected $listeners = ['subject-added' => 'refreshSubjects'];
 
     public function mount(){
-        $this->subjects  = $this->getAllSubjects();
+        $this->subjects = $this->getAllSubjects();
         $this->subjectId = $this->subjects->first();
     }
 

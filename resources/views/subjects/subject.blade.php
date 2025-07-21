@@ -16,7 +16,7 @@
         @forelse($user->subjects as $subject)
             <div class="relative max-w-5xl w-full bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
                 <div class="absolute top-2 right-4">
-                    <span class="text-yellow-400 text-xl">★</span>
+                    @livewire('favourite-toggle', ['subject' => $subject], key($subject->id))
                 </div>
 
                 <div class="grid grid-cols-2 items-center gap-5 w-full">

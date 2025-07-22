@@ -5,7 +5,7 @@ use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccpuntController;
 
-Route::get('/', function () {
+Route::get('/', function (){
     return view('home');
 })->name('home');
 
@@ -22,3 +22,5 @@ Route::view('settings', 'settings')->name('settings')->middleware('auth');
 Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects')->middleware('auth');
 
 Route::view('/subjects/create', 'subjects.addNewSubject')->name('subjects.create')->middleware('auth');
+
+Route::view('/grades', 'grades.grades')->name('grades')->middleware('auth');

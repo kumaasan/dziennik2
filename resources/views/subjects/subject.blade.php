@@ -22,7 +22,7 @@
                 <div class="grid grid-cols-2 items-center gap-5 w-full">
                     <div class="text-white text-xl capitalize">{{ $subject->name }}</div>
                     <div class="flex flex-wrap items-center gap-2">
-                        @foreach($subject->grade as $grade)
+                        @foreach($grades[$subject->id] ?? [] as $grade)
                             <div class="rounded-full border-2 border-white p-2 text-white">{{ $grade->grade }}</div>
                         @endforeach
                     </div>

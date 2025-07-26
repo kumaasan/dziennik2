@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -18,9 +18,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+      'name',
+      'email',
+      'password',
     ];
 
     /**
@@ -29,8 +29,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+      'password',
+      'remember_token',
     ];
 
     /**
@@ -38,11 +38,10 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
+    protected function casts(): array{
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+          'email_verified_at' => 'datetime',
+          'password'          => 'hashed',
         ];
     }
 
@@ -50,11 +49,15 @@ class User extends Authenticatable
         $email = strpos($this->email, '@');
 
         return substr($this->email, 0, 3)
-               . str_repeat('*', $email - 1)
-               . substr($this->email, $email);
+          .str_repeat('*', $email - 1)
+          .substr($this->email, $email);
     }
 
     public function subjects(){
         return $this->hasMany(Subject::class);
+    }
+
+    public function favoriteSubjects(){
+        return $this->hasMany(Subject::class)->where('favorite', true);
     }
 }

@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-8 w-full">
-    @foreach($user->subjects as $subject)
+    @foreach($subjects as $subject)
         <div class="flex lg:flex-row flex-col lg:gap-8 gap-4 w-full">
             <div class="flex-[1.5] bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
                 <div class="grid grid-cols-2 gap-5 w-full">

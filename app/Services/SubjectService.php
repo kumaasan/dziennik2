@@ -11,11 +11,12 @@ class SubjectService {
         //
     }
 
-    public function getUserWithSubjectsAndGrades($userId){
-        return User::with('subjects.grade')->findOrFail($userId);
+    public function getUserSubjects(int $userId){
+        return User::with('subjects')->findOrFail($userId);
     }
 
     public function getFavouriteSubjects($userId){
         return Subject::where('user_id', $userId)->where('favorite', true)->get();
     }
+
 }

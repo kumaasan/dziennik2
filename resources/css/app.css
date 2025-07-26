@@ -10,3 +10,7 @@
 @theme {
     --font-sans: Inter, sans-serif;
 }
+
+body{
+    scroll-behavior: smooth;
+}

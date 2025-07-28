@@ -11,8 +11,9 @@ class FavoriteSubjectsSidebar extends Component {
     public function refresh(){}
 
     public function render(){
-        $favSubjects = auth()->user()->subjects()->where('favorite', true)->get();
+        $favSubjects = auth()->user()?->favouriteSubjects ?? [];
 
         return view('livewire.favorite-subjects-sidebar', compact('favSubjects'));
     }
+
 }

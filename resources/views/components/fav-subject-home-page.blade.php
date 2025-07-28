@@ -1,5 +1,5 @@
 <div>
-    @forelse ($favoriteSubjects as $subject)
+    @forelse(auth()->user()?->favouriteSubjects ?? [] as $subject)
         <div>
                 {{$subject->name}}
         </div>

@@ -57,7 +57,8 @@ class User extends Authenticatable {
         return $this->hasMany(Subject::class);
     }
 
-    public function favoriteSubjects(){
+    public function favouriteSubjects(){
         return $this->hasMany(Subject::class)->where('favorite', true);
     }
+
 }

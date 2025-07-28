@@ -15,8 +15,8 @@ class SubjectService {
         return User::with('subjects')->findOrFail($userId);
     }
 
-    public function getFavouriteSubjects($userId){
-        return Subject::where('user_id', $userId)->where('favorite', true)->get();
-    }
+    //    public function getFavouriteSubjects($userId){
+    //        return Subject::where('user_id', $userId)->where('favorite', true)->get();
+    //    }
 
 }

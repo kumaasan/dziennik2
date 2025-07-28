@@ -7,37 +7,41 @@
                         <div class="text-black dark:text-white text-xl capitalize">{{ $subject->name }}</div>
                     </div>
                     <div class="flex flex-wrap items-center justify-start gap-2">
-                        @foreach($subject->grade as $grade)
-                            <div class="rounded-full border-2 border-black dark:border-white p-2 text-black dark:text-white">{{ $grade->grade }}</div>
+                        @foreach($grades[$subject->id] ?? [] as $grade)
+                            <div class="rounded-full border-2 border-black dark:border-white p-2 text-black dark:text-white">
+                                {{ $grade->grade }} (waga: {{ $grade->weight }})
+                            </div>
                         @endforeach
                     </div>
                 </div>
             </div>
+
             <div class="flex-[1] bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
                 <p class="text-xl text-center">Dodaj oceny</p>
-                <form wire:submit.prevent="addGrade({{ $subject->id }})" class="flex flex-col gap-5">
-                    @csrf
+                <form wire:submit.prevent="addGrade" class="flex flex-col gap-5">
                     <div>
                         <label class="block text-sm font-medium mb-1">Ocena</label>
-                        <input
-                            wire:model="grade"
-                            type="number"
-                            class="w-full px-4 py-2 border border-border rounded-lg bg-white dark:bg-[#1f1f22] text-black dark:text-white  focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all @error('email') ring-2 ring-red-500 dark:border-red-500 border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500 @enderror"
-                            placeholder="Np: 5"
-                        />
+                        <input wire:model="grade"
+                               type="number"
+                               min="1"
+                               max="6"
+                               class="w-full px-4 py-2 border rounded" placeholder="Np: 5" />
                         @error('grade') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
+
                     <div>
                         <label class="block text-sm font-medium mb-1">Waga</label>
-                        <input
-                            wire:model="weight"
-                            type="number"
-                            class="w-full px-4 py-2 border border-border rounded-lg bg-white dark:bg-[#1f1f22] text-black dark:text-white  focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all @error('email') ring-2 ring-red-500 dark:border-red-500 border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500 @enderror"
-                            placeholder="Np: 5"
-                        />
+                        <input wire:model="weight"
+                               type="number"
+                               min="1"
+                               max="6"
+                               class="w-full px-4 py-2 border rounded" placeholder="Np: 2" />
                         @error('weight') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
-                    <button type="submit" class="w-full bg-[#a6a6a6] hover:bg-[#c8c8c8] text-primary-content font-medium py-2.5 rounded-lg transition-colors">
+
+                    <button type="submit"
+                            wire:click="$set('subjectId', {{ $subject->id }})"
+                            class="w-full bg-gray-400 hover:bg-gray-500 text-white font-medium py-2 rounded">
                         Dodaj
                     </button>
                 </form>

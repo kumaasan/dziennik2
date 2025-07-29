@@ -18,7 +18,7 @@
             <div>
                 <label class="block text-sm font-medium mb-1">Hasło</label>
                 <input
-                    wire:model.live.debounce.500ms="password"
+                    wire:model.live.debounce.100ms="password"
                     type="password"
                     class="w-full px-4 py-2 border border-border rounded-lg bg-white dark:bg-[#1f1f22] text-black dark:text-white  focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all @error('password') ring-2 ring-red-500 dark:border-red-500 border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500 @enderror"
                     placeholder="•••••"

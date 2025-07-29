@@ -3,13 +3,13 @@
         <div class="flex lg:flex-row flex-col lg:gap-8 gap-4 w-full">
             <div class="flex-[1.5] bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
                 <div class="grid grid-cols-2 gap-5 w-full">
-                    <div class="flex flex-wrap items-center justify-start gap-2">
+                    <div class="flex flex-col flex-wrap items-start justify-start gap-2">
                         <div class="text-black dark:text-white text-xl capitalize">{{ $subject->name }}</div>
                     </div>
                     <div class="flex flex-wrap items-center justify-start gap-2">
                         @foreach($grades[$subject->id] ?? [] as $grade)
                             <div class="rounded-full border-2 border-black dark:border-white p-2 text-black dark:text-white">
-                                {{ $grade->grade }} (waga: {{ $grade->weight }})
+                                {{ $grade->grade }} <!--(waga: {{ $grade->weight }}) -->
                             </div>
                         @endforeach
                     </div>
@@ -18,7 +18,7 @@
 
             <div class="flex-[1] bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
                 <p class="text-xl text-center">Dodaj oceny</p>
-                <form wire:submit.prevent="addGrade" class="flex flex-col gap-5">
+                <form wire:submit.prevent="addGrade({{ $subject->id }})" class="flex flex-col gap-5">
                     <div>
                         <label class="block text-sm font-medium mb-1">Ocena</label>
                         <input wire:model="grade"
@@ -40,7 +40,6 @@
                     </div>
 
                     <button type="submit"
-                            wire:click="$set('subjectId', {{ $subject->id }})"
                             class="w-full bg-gray-400 hover:bg-gray-500 text-white font-medium py-2 rounded">
                         Dodaj
                     </button>

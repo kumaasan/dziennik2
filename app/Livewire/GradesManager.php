@@ -15,19 +15,20 @@ class GradesManager extends Component {
     public $grade;
     #[Rule('required', 'numeric', 'min:1', 'max:6')]
     public $weight;
-    public $subjectId;
 
-    public function addGrade(){
+    public function addGrade($id){
         $validated = $this->validate();
 
         $grade = new Grade();
         $grade->user_id = auth()->id();
-        $grade->subject_id = $this->subjectId;
+        $grade->subject_id = $id;
         $grade->grade = $validated['grade'];
         $grade->weight = $validated['weight'];
         $grade->save();
 
-        $this->reset(['grade', 'weight']);
+        //        $this->reset(['grade', 'weight']);
+        $this->grade = null;
+        $this->weight = '';
     }
 
     public function render(){

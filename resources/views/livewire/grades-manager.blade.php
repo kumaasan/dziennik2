@@ -3,8 +3,9 @@
         <div class="flex lg:flex-row flex-col lg:gap-8 gap-4 w-full">
             <div class="flex-[1.5] bg-[#f0f0f3] dark:bg-[#303035] border-2 border-black dark:border-white p-8 rounded-xl">
                 <div class="grid grid-cols-2 gap-5 w-full">
-                    <div class="flex flex-col flex-wrap items-start justify-start gap-2">
+                    <div class="flex flex-col flex-wrap items-start justify-start gap-y-4">
                         <div class="text-black dark:text-white text-xl capitalize">{{ $subject->name }}</div>
+                        <div class="text-black dark:text-white text-xl capitalize">{{ $subject->favorite }}</div>
                     </div>
                     <div class="flex flex-wrap items-center justify-start gap-2">
                         @foreach($grades[$subject->id] ?? [] as $grade)

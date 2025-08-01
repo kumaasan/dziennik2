@@ -21,10 +21,17 @@ class AppServiceProvider extends ServiceProvider {
      */
     public function boot(): void{
         Model::preventLazyLoading();
+
         View::composer('*', function($view){
             if(Auth::check()){
                 Auth::user()->loadMissing('favouriteSubjects');
             }
         });
+
+        if(Auth::check()){
+            Auth::setUser(
+              Auth::user()->load('favouriteSubjects'),
+            );
+        }
     }
 }

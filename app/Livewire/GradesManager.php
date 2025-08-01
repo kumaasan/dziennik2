@@ -26,9 +26,7 @@ class GradesManager extends Component {
         $grade->weight = $validated['weight'];
         $grade->save();
 
-        //        $this->reset(['grade', 'weight']);
-        $this->grade = null;
-        $this->weight = '';
+        $this->reset();
     }
 
     public function render(){

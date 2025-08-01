@@ -12,6 +12,7 @@
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @fluxAppearance
+    @livewireStyles
 </head>
 <body class="dark:bg-zinc-800 bg-[#EFEFEF] flex h-dvh w-full">
     <div id="sidebar"
@@ -22,6 +23,7 @@
         @yield('content')
         <x-footer/>
     </main>
+@livewireScripts
 @fluxScripts
 </body>
 </html>

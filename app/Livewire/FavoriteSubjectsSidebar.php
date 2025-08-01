@@ -7,13 +7,20 @@ use Livewire\Component;
 
 class FavoriteSubjectsSidebar extends Component {
 
-    #[On('favorite-updated')]
-    public function refresh(){}
+    public $favSubjects;
 
-    public function render(){
-        $favSubjects = auth()->user()?->favouriteSubjects ?? [];
-
-        return view('livewire.favorite-subjects-sidebar', compact('favSubjects'));
+    public function mount(){
+        $this->favSubjects = auth()->user()?->favouriteSubjects ?? collect();
     }
 
+    #[On('favorite-updated')]
+    public function refresh($favSubjects){
+        $this->favSubjects = collect($favSubjects ?? []);
+    }
+
+    public function render(){
+        return view('livewire.favorite-subjects-sidebar', [
+          'favSubjects' => $this->favSubjects,
+        ]);
+    }
 }

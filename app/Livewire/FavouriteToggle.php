@@ -13,7 +13,9 @@ class FavouriteToggle extends Component {
         $this->subject->favorite = !$this->subject->favorite;
         $this->subject->save();
 
-        $this->dispatch('favorite-updated');
+        $favSubjects = auth()->user()->favouriteSubjects()->select('id', 'name')->get()->toArray();
+
+        $this->dispatch('favorite-updated', $favSubjects);
     }
 
 

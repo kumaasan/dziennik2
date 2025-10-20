@@ -14,7 +14,7 @@
     @fluxAppearance
     @livewireStyles
 </head>
-<body class="dark:bg-zinc-800 bg-[#EFEFEF] flex h-dvh w-full">
+<body class="dark:bg-zinc-800 bg-[#EFEFEF] flex h-dvh w-full ">
     <div id="sidebar"
         class="fixed inset-y-0 left-0 z-50 lg:w-64 w-0 transform transition-transform duration-300 lg:relative lg:translate-x-0 lg:block-translate-x-full">
         <x-sidebar/>

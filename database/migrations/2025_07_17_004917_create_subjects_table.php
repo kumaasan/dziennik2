@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name')->unique();
-            $table->double('average')->nullable();
+            $table->decimal('average', 4, 2)->default(0.0);
             $table->double('minimal_average')->nullable();
             $table->boolean('favorite')->default(false);
             $table->timestamps();

@@ -14,3 +14,7 @@
 body{
     scroll-behavior: smooth;
 }
+
+html, body {
+    overflow: hidden;
+}

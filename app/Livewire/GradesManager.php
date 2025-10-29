@@ -31,28 +31,36 @@ class GradesManager extends Component {
         $this->dispatch('$refresh');
     }
 
-    //branie kazdej oceny i dodawnie jej tyle razy ile jest w wadze, potem dzielenie przez ilosc ocen
-    public function calculateAverage($id){
+    public function calculateAverage($id)
+    {
         $grades = Grade::where('subject_id', $id)->get();
-        if($grades->isEmpty()){
+
+        if ($grades->isEmpty()) {
             $subject = Subject::findrFail($id);
-            if($subject){
-                $subject->average = 0;
-                $subject->save();
-            }
+            $subject->average = 0;
+            $subject->save();
             return 0;
         }
+
         $sumWeighted = $grades->sum(fn($g) => $g->grade * $g->weight);
         $sumWeights = $grades->sum('weight');
+        $average = $sumWeighted / $sumWeights;
 
-        $average = ($sumWeighted / $sumWeights);
+        $subject = Subject::findrFail($id);
+        $subject->average = $average;
+        $subject->save();
 
-        $subject = Subject::findOrFail($id);
-        if($subject){
-            $subject->average = $average;
-            $subject->save();
-        }
         return $average;
+    }
+
+
+    public function showGradeDetails($gradeId){
+        $grade = Grade::findOrFail($gradeId);
+
+        $this->dispatch('show-grade-details', [
+          'grade' => $grade->grade,
+          'weight' => $grade->weight,
+        ]);
     }
     public function render(){
         $subjects = app(SubjectService::class)->getSubjects(auth()->id());

@@ -9,7 +9,7 @@
                     </div>
                     <div class="flex flex-wrap items-center justify-start gap-2">
                         @foreach($grades[$subject->id] ?? [] as $grade)
-                            <div class="rounded-full border-2 border-black dark:border-white p-2 text-black dark:text-white">
+                            <div wire:click="showGradeDetails({{$grade->id}})" class="rounded-full border-2 border-black dark:border-white p-2 text-black dark:text-white">
                                 {{ $grade->grade }} <!--(waga: {{ $grade->weight }}) -->
                             </div>
                         @endforeach
@@ -49,3 +49,18 @@
         </div>
     @endforeach
 </div>
+
+<script>
+  window.addEventListener('show-grade-details', function(event) {
+    let grade = event.detail.grade;
+    let weight = event.detail.weight;
+
+    Swal.fire({
+      title: `Ocena: ${grade}`,
+      html: `<b>Waga:</b> ${weight}`,
+      icon: 'info',
+      confirmButtonText: 'OK'
+    });
+  });
+</script>
+

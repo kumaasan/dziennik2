@@ -36,15 +36,7 @@
 
             <div class="w-full border-t border-accent"></div>
 
-            <div class="flex flex-col items-start justify-center w-full">
-                <div class="flex items-center justify-between w-full px-7 pt-7">
-                    <div>Minimalna średnia</div>
-                    <div>dummy 1.75</div>
-                </div>
-                <div class="p-7 text-sm text-[#767675] dark:text-gray-500">*<strong class="underline">Minimalna średnia</strong> oznacza średnią minimalną, pozwalającą na zdanie.
-                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline text-sm">Zmień ją tutaj</a>
-                </div>
-            </div>
+            <livewire:settings.minimal-average-section/>
 {{--            dalsza czesc tego carda--}}
         </div>
 

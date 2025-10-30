@@ -36,7 +36,7 @@ class GradesManager extends Component {
         $grades = Grade::where('subject_id', $id)->get();
 
         if ($grades->isEmpty()) {
-            $subject = Subject::findrFail($id);
+            $subject = Subject::findOrFail($id);
             $subject->average = 0;
             $subject->save();
             return 0;
@@ -46,7 +46,7 @@ class GradesManager extends Component {
         $sumWeights = $grades->sum('weight');
         $average = $sumWeighted / $sumWeights;
 
-        $subject = Subject::findrFail($id);
+        $subject = Subject::findOrFail($id);
         $subject->average = $average;
         $subject->save();
 

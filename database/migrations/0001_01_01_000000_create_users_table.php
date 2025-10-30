@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->decimal('minimal_average', 4, 2)->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
         });

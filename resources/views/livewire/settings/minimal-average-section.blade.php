@@ -1,12 +1,12 @@
 <div class="flex flex-col items-start justify-center w-full">
     <div class="flex items-center justify-between w-full px-7 pt-7">
         <div>
-            Minimalna średnia:
+            Minimalna średnia
         </div>
         @if($showForm)
             <div>
                 <form>
-                    <input placeholder="np: 1.75"  wire:model="average" class="border-2 pl-0.5 rounded-md dark:text-white text-black " type="number">
+                    <input placeholder="np: 1.75"  wire:model="average" class="border-2 pl-0.5 rounded-md dark:text-white text-black" step="0.05" type="number">
                     @error('average') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </form>
             </div>

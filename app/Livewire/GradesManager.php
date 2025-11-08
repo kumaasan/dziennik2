@@ -6,6 +6,7 @@ use App\Models\Grade;
 use App\Models\Subject;
 use App\Services\GradeService;
 use App\Services\SubjectService;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -52,16 +53,21 @@ class GradesManager extends Component {
 
         return $average;
     }
-
-
-    public function showGradeDetails($gradeId){
+    #[On('deleteGrade')]
+    public function deleteGrade($gradeId)
+    {
         $grade = Grade::findOrFail($gradeId);
 
-        $this->dispatch('show-grade-details', [
-          'grade' => $grade->grade,
-          'weight' => $grade->weight,
-        ]);
+        if ($grade) {
+            $subjectId = $grade->subject_id;
+            $grade->delete();
+
+            $this->calculateAverage($subjectId);
+            $this->dispatch('$refresh');
+        }
     }
+
+
     public function render(){
         $subjects = app(SubjectService::class)->getSubjects(auth()->id());
         $grades = app(GradeService::class)->getUserGrades(auth()->id())->groupBy('subject_id');

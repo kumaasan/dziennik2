@@ -9,7 +9,7 @@ class MinimalAverageSection extends Component
 {
     public $showForm = false;
     public $showData = true;
-    #[Rule(['required', 'decimal:2'])]
+    #[Rule(['required', 'numeric', 'min:0', 'max:5'])]
     public $average;
 
     public function updateAverage(){
@@ -23,6 +23,10 @@ class MinimalAverageSection extends Component
     public function toggleForm(){
         $this->showForm = !$this->showForm;
         $this->showData = !$this->showData;
+    }
+
+    public function mount(){
+        $this->average = auth()->user()->minimal_average;
     }
     public function render()
     {

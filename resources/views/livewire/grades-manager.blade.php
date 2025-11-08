@@ -5,11 +5,13 @@
                 <div class="grid grid-cols-2 gap-5 w-full">
                     <div class="flex flex-col flex-wrap items-start justify-start gap-y-4">
                         <div class="text-black dark:text-white text-xl capitalize">{{ $subject->name }}</div>
-                        <div class="text-black dark:text-white text-xl">Średnia: {{ $subject->average }} </div>
+                        <div class="text-black dark:text-white text-xl flex gap-x-3">Średnia:
+                            <div class="{{ auth()->user()->minimal_average < $subject->average ? 'text-green-500' : 'text-red-500' }} text-xl">{{ $subject->average }} </div>
+                        </div>
                     </div>
                     <div class="flex flex-wrap items-center justify-start gap-2">
                         @foreach($grades[$subject->id] ?? [] as $grade)
-                            <div wire:click="showGradeDetails({{$grade->id}})" class="rounded-full border-2 border-black dark:border-white p-2 text-black dark:text-white">
+                            <div onclick="showGradePopup({{$grade->id}}, {{ $grade->grade }}, {{ $grade->weight }}, '{{ $subject->name }}' )" class="rounded-full border-2 border-black dark:border-white p-2 text-black dark:text-white">
                                 {{ $grade->grade }} <!--(waga: {{ $grade->weight }}) -->
                             </div>
                         @endforeach
@@ -49,18 +51,44 @@
         </div>
     @endforeach
 </div>
-
 <script>
-  window.addEventListener('show-grade-details', function(event) {
-    let grade = event.detail.grade;
-    let weight = event.detail.weight;
-
+  function showGradePopup(gradeId, grade, weight, subject) {
     Swal.fire({
-      title: `Ocena: ${grade}`,
-      html: `<b>Waga:</b> ${weight}`,
+      title: `Przedmiot: ${subject}`,
+      html: `
+        <b>Ocena:</b> ${grade}<br>
+        <b>Waga:</b> ${weight}
+      `,
       icon: 'info',
-      confirmButtonText: 'OK'
-    });
-  });
-</script>
+      showCancelButton: true,
+      confirmButtonText: 'Usuń ocenę',
+      cancelButtonText: 'Zamknij',
+      confirmButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Na pewno chcesz usunąć?",
+          text: "Nie będziesz mógł tego cofnąć!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Tak, usuń to!",
+          cancelButtonText: "Anuluj"
+        }).then((confirmResult) => {
+          if (confirmResult.isConfirmed) {
+            window.Livewire.dispatch('deleteGrade', { gradeId: gradeId });
 
+            Swal.fire({
+              title: "Usunięto!",
+              text: "Ocena została usunięta.",
+              icon: "success",
+              timer: 1500,
+              showConfirmButton: false
+            });
+          }
+        });
+      }
+    });
+  }
+</script>

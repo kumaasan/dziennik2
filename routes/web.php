@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccpuntController;
 
-Route::get('/', function (){
-    return view('home');
-})->name('home');
+Route::get('/', [HomePageController::class, 'index'])->name('home');
 
 Route::view('/login', 'auth.login')->name('login');
 

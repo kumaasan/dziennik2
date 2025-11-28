@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <p class="text-sm mb-1 text-gray-400">Ilość zadań</p>
-                        <p class="text-4xl font-bold text-white mb-1">67</p>
+                        <p class="text-4xl font-bold text-white mb-1">123456</p>
                         <p class="text-sm text-gray-400 font-medium">W tym semestrze</p>
                     </div>
                 </div>
@@ -137,9 +137,6 @@
                                 </div>
                                 <p class="text-xl font-semibold mb-2 text-white">Brak ulubionych przedmiotów</p>
                                 <p class="text-gray-400 text-sm mb-6">Dodaj swoje pierwsze przedmioty, aby śledzić postępy</p>
-                                <button class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-xl px-6 py-3 text-center transition-all duration-200 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105">
-                                    Dodaj przedmiot
-                                </button>
                             </div>
                         @endforelse
                     </div>
@@ -150,7 +147,7 @@
             <div class="backdrop-blur-xl bg-white/5 border border-white/10 w-full rounded-2xl overflow-hidden">
                 <div class="flex items-center justify-between px-7 py-5 bg-gradient-to-r from-white/5 to-transparent">
                     <p class="text-xl font-semibold text-white">Zadania do zrobienia</p>
-                    <a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors flex items-center gap-1 group">
+                    <a href="{{ route('tasks') }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors flex items-center gap-1 group">
                         Zarządzaj
                         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -170,9 +167,6 @@
                             </div>
                             <p class="text-xl font-semibold mb-2 text-white">Brak zadań</p>
                             <p class="text-gray-400 text-sm mb-6">Dodaj swoje pierwsze zadania</p>
-                            <button class="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-medium rounded-xl px-6 py-3 text-center transition-all duration-200 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:scale-105">
-                                Dodaj zadanie
-                            </button>
                         </div>
                     </div>
                 </div>

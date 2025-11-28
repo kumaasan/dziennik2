@@ -22,7 +22,7 @@
             <livewire:settings.minimal-average-section/>
         </div>
 
-        <!-- Zarządzanie kontem - WITH RED GLOW! -->
+        <!-- Zarządzanie kontem -->
         <div class="relative group overflow-hidden rounded-2xl backdrop-blur-xl bg-gradient-to-br from-red-500/10 to-red-600/5 border border-red-500/20 hover:border-red-400/40 transition-all duration-300 w-full">
             <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
@@ -49,7 +49,7 @@
                         <form method="post" action="{{route('delete.account')}}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-medium rounded-xl px-5 py-2.5 text-sm text-center transition-all duration-200 shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/50 hover:scale-105 border border-red-400/20">
+                            <button type="submit" class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-medium rounded-xl px-5 py-2.5 text-sm text-center transition-all duration-200 hover:scale-105 border border-red-400/20">
                                 Usuń konto
                             </button>
                         </form>
@@ -69,7 +69,7 @@
                             </svg>
                             Wyloguj się
                         </div>
-                        <a href="{{ route('logout') }}" class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-xl px-5 py-2.5 text-sm text-center transition-all duration-200 shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/50 hover:scale-105 border border-orange-400/20">
+                        <a href="{{ route('logout') }}" class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-xl px-5 py-2.5 text-sm text-center transition-all duration-200 hover:scale-105 border border-orange-400/20">
                             Wyloguj się
                         </a>
                     </div>

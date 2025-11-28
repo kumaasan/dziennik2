@@ -19,6 +19,7 @@ class MinimalAverageSection extends Component
         }
         $user->minimal_average = $this->average;
         $user->save();
+        $this->toggleForm();
     }
     public function toggleForm(){
         $this->showForm = !$this->showForm;

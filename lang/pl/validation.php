@@ -14,5 +14,6 @@ return [
     'confirmed' => 'Hasła nie są takie same.',
     'required_with' => 'Pole jest wymagane.',
     'exists' => 'Wartość pola :attribute nie została znaleziona w bazie danych.',
-    'failed' => 'Nie prawidłowe hasło.'
+    'failed' => 'Nie prawidłowe hasło.',
+    'after_or_equal' => 'Data nie może wskazywać przeszłości.',
 ];

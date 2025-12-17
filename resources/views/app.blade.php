@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,9 +13,9 @@
     {{--sweet alerts--}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @fluxAppearance
+
 </head>
-<body class="dark:bg-zinc-800 bg-[#EFEFEF] flex h-dvh w-full sm:pb-0">
+<body class="bg-zinc-800 flex h-dvh w-full sm:pb-0">
     <div id="sidebar"
         class="fixed inset-y-0 left-0 z-50 lg:w-64 w-0 transform transition-transform duration-300 lg:relative lg:translate-x-0 lg:block-translate-x-full">
         <x-sidebar/>

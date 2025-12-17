@@ -3,8 +3,10 @@
 @section('title', 'Zadania')
 @section('content')
     <div class="flex flex-col items-center justify-start w-full pt-6 lg:pl-8 gap-y-10" x-data="{ modalOpen: false, selectedTask: null }">
+        <div class="flex w-full items-center justify-center gap-20">
+            <p class="text-3xl capitalize font-bold text-white">Przypomnienia</p>
+        </div>
         <div class="backdrop-blur-xl bg-white/5 border border-white/10 w-full rounded-2xl overflow-hidden">
-
             <div class="flex items-center justify-between px-7 py-5 bg-gradient-to-r from-white/5 to-transparent">
                 <p class="text-xl font-semibold text-white">Wszystkie zadania</p>
                 <a href="{{ route('tasks.create') }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors flex items-center gap-1 group">
@@ -28,6 +30,9 @@
                                     <div class="bg-gradient-to-br from-gray-700 to-gray-800 uppercase w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/10">
                                         {{ strtoupper(substr($task->name, 0, 2)) }}
                                     </div>
+                                    <span class="text-xs font-medium text-gray-400 bg-white/5 px-2 py-1 rounded-md border border-white/10">
+                                        {{ $task->created_at->diffForHumans() }}
+                                     </span>
                                 </div>
 
                                 <h3 class="text-lg font-bold truncate mb-3 text-white">
@@ -42,7 +47,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                    <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
                             <div class="bg-gradient-to-br from-white/10 to-white/5 rounded-full p-8 mb-6 border border-white/10">
                                 <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
@@ -50,7 +55,7 @@
                             </div>
                             <p class="text-xl font-semibold mb-2 text-white">Brak zadań na ten moment</p>
                             <p class="text-gray-400 text-sm mb-6">Dodaj swoje pierwsze zadanie, aby śledzić postępy</p>
-                        </div>
+                    </div>
                     @endforelse
                 </div>
             </div>
@@ -112,7 +117,7 @@
                             </div>
                             <div class="bg-white/5 border border-white/10 rounded-xl p-3">
                                 <p class="text-xs text-gray-400 mb-1">Termin</p>
-                                <p class="text-sm text-white font-semibold" x-text="selectedTask?.due_to || 'Brak'"></p>
+                                <p class="text-sm text-white font-semibold" x-text="selectedTask?.due_to || 'brak'"></p>
                             </div>
                         </div>
 

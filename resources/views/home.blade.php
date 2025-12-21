@@ -97,7 +97,7 @@
                 <div class="w-full border-t border-white/10"></div>
 
                 <!-- Subject Cards Grid -->
-                <div class="p-7">
+                <div class="py-5 px-3">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         @forelse($data['favoriteSubjects'] ?? [] as $subject)
                             <div class="relative group overflow-hidden rounded-xl p-5 backdrop-blur-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-white/20 hover:from-white/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">

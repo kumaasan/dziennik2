@@ -19,7 +19,7 @@
 
             <div class="w-full border-t border-white/10"></div>
 
-            <div class="p-7">
+            <div class="py-5 px-3">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     @forelse($tasks as $task)
                         <div @click="modalOpen = true; selectedTask = {{ json_encode($task) }}" class="relative group overflow-hidden rounded-xl p-5 backdrop-blur-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-white/20 hover:from-white/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
@@ -30,7 +30,7 @@
                                     <div class="bg-gradient-to-br from-gray-700 to-gray-800 uppercase w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/10">
                                         {{ strtoupper(substr($task->name, 0, 2)) }}
                                     </div>
-                                    <span class="text-xs font-medium text-gray-400 bg-white/5 px-2 py-1 rounded-md border border-white/10">
+                                    <span class="text-[14px] font-medium text-gray-400 bg-white/5 px-2 py-1 rounded-md border border-white/10">
                                         {{ $task->created_at->diffForHumans() }}
                                      </span>
                                 </div>
@@ -83,7 +83,7 @@
                  x-transition:leave="transition ease-in duration-200"
                  x-transition:leave-start="opacity-100 scale-100"
                  x-transition:leave-end="opacity-0 scale-90"
-                 class="max-w-md w-full mx-4">
+                 class="w-full mx-4 max-w-lg md:max-w-xl lg:max-w-2xl">
 
                 <div class="relative overflow-hidden rounded-xl p-5 bg-gradient-to-br from-white/10 to-white/5 border border-white/20 shadow-2xl">
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
@@ -92,7 +92,7 @@
                         <!-- Modal Header -->
                         <div class="flex items-center justify-between mb-5">
                             <div class="flex items-center gap-3">
-                                <div class="bg-gradient-to-br from-gray-700 to-gray-800 uppercase w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/10">
+                                <div class="bg-gradient-to-br from-gray-700 to-gray-800 uppercase size-14 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/10">
                                     <span x-text="selectedTask?.name ? selectedTask.name.substring(0, 2).toUpperCase() : ''"></span>
                                 </div>
                                 <h2 class="text-lg font-semibold text-white" x-text="selectedTask?.name"></h2>
@@ -105,28 +105,28 @@
                         </div>
 
                         <div class="border-t border-white/10 pt-4 mb-4">
-                            <p class="text-xs text-white mb-2">Opis zadania</p>
-                            <p class="text-sm text-gray-200 overflow-y-auto max-h-[30vh] pr-2" x-text="selectedTask?.description"></p>
+                            <p class="text-md text-white mb-2">Opis zadania</p>
+                            <p class="text-xl text-gray-200 overflow-y-auto max-h-[40vh] pr-2" x-text="selectedTask?.description"></p>
                         </div>
 
                         <!-- Task Details Grid -->
                         <div class="grid grid-cols-2 gap-3 mb-4">
                             <div class="bg-white/5 border border-white/10 rounded-xl p-3">
-                                <p class="text-xs text-gray-400 mb-1">Status</p>
-                                <p class="text-sm text-white font-semibold">Do zrobienia</p>
+                                <p class="text-lg text-gray-400 mb-1">Status</p>
+                                <p class="text-xl text-white font-semibold">Do zrobienia</p>
                             </div>
                             <div class="bg-white/5 border border-white/10 rounded-xl p-3">
-                                <p class="text-xs text-gray-400 mb-1">Termin</p>
-                                <p class="text-sm text-white font-semibold" x-text="selectedTask?.due_to || 'brak'"></p>
+                                <p class="text-lg text-gray-400 mb-1">Termin</p>
+                                <p class="text-xl text-white font-semibold" x-text="selectedTask?.due_to || 'brak'"></p>
                             </div>
                         </div>
 
                         <!-- Action Buttons -->
                         <div class="flex flex-col gap-2">
-                            <button class="w-full py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm font-medium rounded-xl transition-all hover:scale-[1.01]">
+                            <button class="w-full py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-lg font-medium rounded-xl transition-all hover:scale-[1.01]">
                                 Edytuj
                             </button>
-                            <button class="w-full py-2.5 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-sm font-medium rounded-xl transition-all hover:scale-[1.01]">
+                            <button class="w-full py-2.5 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-lg font-medium rounded-xl transition-all hover:scale-[1.01]">
                                 Oznacz jako wykonane
                             </button>
                         </div>

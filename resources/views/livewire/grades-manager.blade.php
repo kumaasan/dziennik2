@@ -11,7 +11,7 @@
 
     <div class="w-full border-t border-white/10"></div>
 
-    <div class="p-7">
+    <div class="py-5 px-3">
         <div class="flex flex-col gap-8 w-full">
             @forelse($subjects as $subject)
                 <div class="flex lg:flex-row flex-col lg:gap-8 gap-4 w-full">

@@ -21,7 +21,7 @@
 
             <div class="w-full border-t border-white/10"></div>
 
-            <div class="p-7">
+            <div class="py-5 px-3">
                 <div class="flex flex-col gap-6">
                     @forelse($user->subjects as $subject)
                         <div class="relative backdrop-blur-xl bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">

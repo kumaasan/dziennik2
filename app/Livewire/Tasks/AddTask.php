@@ -23,6 +23,7 @@ class AddTask extends Component
         $task = new Task();
         $task->name = $validated['name'];
         $task->description = $validated['description'];
+        $task->due_to = $validated['due_to'];
         $task->user_id = auth()->user()->id;
         $task->save();
 

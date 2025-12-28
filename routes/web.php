@@ -28,3 +28,7 @@ Route::view('/grades', 'grades.grades')->name('grades')->middleware('auth');
 Route::get('tasks', [TaskController::class, 'index'])->name('tasks')->middleware('auth');
 
 Route::view('/tasks/create', 'tasks.taskManager')->name('tasks.create')->middleware('auth');
+
+Route::post('/tasks/{task}/done', [TaskController::class, 'markAsDone'])->name('tasks.done');
+
+Route::post('/tasks/{task}/undone', [TaskController::class, 'markAsUndone'])->name('tasks.undone');

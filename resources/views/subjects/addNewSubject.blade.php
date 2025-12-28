@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="w-full border-t border-white/10"></div>
-            <div class="flex items-center justify-start gap-y-8 flex-col w-full py-10 px-5 ">
+            <div class="flex items-center justify-start gap-y-8 flex-col w-full py-5 px-3 ">
                 <div class="max-w-2xl w-full backdrop-blur-xl bg-white/5 border border-white/10 p-8 rounded-2xl">
                     <livewire:add-new-subject />
                 </div>

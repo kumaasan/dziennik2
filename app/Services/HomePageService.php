@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Grade;
 use App\Models\Subject;
+use App\Models\Task;
 
 class HomePageService {
 
@@ -25,6 +26,8 @@ class HomePageService {
           'finalGrade' => $this->convertAverageToGrade($studentAverage),
           'subjectsCount' => Subject::where('user_id', $user_id)->count(),
           'favoriteSubjects' => $favoriteSubjects,
+          'taskCount' => Task::where('user_id', $user_id)->count(),
+          'doneTaskCount' => Task::where('user_id', $user_id)->where('is_done', true)->count(),
         ];
     }
 

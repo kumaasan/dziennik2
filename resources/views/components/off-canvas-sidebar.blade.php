@@ -65,7 +65,7 @@
 
                 @auth()
                     <div class="capitalize group -mx-2 flex gap-x-3 rounded-xl p-3 font-semibold text-xl leading-6 text-white hover:bg-white/10 transition-all duration-200">
-                        <span class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 border border-blue-400/20 text-[0.625rem] font-bold text-white shadow-lg">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                        <span class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 border border-blue-400/20 text-[0.825rem] font-bold text-white shadow-lg">{{ substr(Auth::user()->name, 0, 1) }}</span>
                         {{Auth::user()->name}}
                     </div>
                 @endauth

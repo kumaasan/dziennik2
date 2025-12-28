@@ -26,7 +26,7 @@
                         </div>
                         <p class="text-sm mb-1 text-gray-400">Liczba ocen dodanych</p>
                         <p class="text-4xl font-bold text-white mb-1">{{ $data['gradesCount'] }}</p>
-                        <p class="text-emerald-400 text-sm font-medium">+5 w tym tygodniu</p>
+                        <p class="text-gray-400 text-sm font-medium">w tym semestrze</p>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <p class="text-sm mb-1 text-gray-400">Ilość zadań</p>
-                        <p class="text-4xl font-bold text-white mb-1">123456</p>
+                        <p class="text-4xl font-bold text-white mb-1">{{ $data['taskCount'] }}</p>
                         <p class="text-sm text-gray-400 font-medium">W tym semestrze</p>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                             </div>
                         </div>
                         <p class="text-sm mb-1 text-gray-400">Wykonane zadania</p>
-                        <p class="text-4xl font-bold text-white mb-1">2137</p>
-                        <p class="text-emerald-400 text-sm font-medium">🔥 Świetna passa!</p>
+                        <p class="text-4xl font-bold text-white mb-1">{{ $data['doneTaskCount'] }}</p>
+                        <p class="text-emerald-400 text-sm font-medium">{{ $data['doneTaskCount'] >= 2 ? 'Świetna passa!' : 'Dobry początek!' }}</p>
                     </div>
                 </div>
             </div>
@@ -157,17 +157,52 @@
 
                 <div class="w-full border-t border-white/10"></div>
 
-                <div class="p-7">
+                <div class="py-5 px-3">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
-                            <div class="bg-gradient-to-br from-white/10 to-white/5 rounded-full p-8 mb-6 border border-white/10">
-                                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                                </svg>
+                        @forelse($tasks as $task)
+                            @php
+                                $taskData = [
+                                    'id' => $task->id,
+                                    'name' => $task->name,
+                                    'description' => $task->description,
+                                    'due_to' => $task->due_to ? $task->due_to->format('d-m-Y') : 'brak',
+                                ];
+                            @endphp
+                            <div @click="modalOpen = true; selectedTask = {{ json_encode($taskData) }}" class="relative group overflow-hidden rounded-xl p-5 backdrop-blur-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-white/20 hover:from-white/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                <div class="relative z-10">
+                                    <div class="flex items-start justify-between mb-4">
+                                        <div class="bg-gradient-to-br from-gray-700 to-gray-800 uppercase w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/10">
+                                            {{ strtoupper(substr($task->name, 0, 2)) }}
+                                        </div>
+                                        <span class="text-[14px] font-medium text-gray-400 bg-white/5 px-2 py-1 rounded-md border border-white/10">
+                                        {{ $task->created_at->diffForHumans() }}
+                                    </span>
+                                    </div>
+
+                                    <h3 class="text-lg font-bold truncate mb-3 text-white">
+                                        {{ $task->name }}
+                                    </h3>
+
+                                    <div class="flex items-center justify-between text-xs pt-3 border-t border-white/10">
+                                    <span class="font-bold text-gray-200 truncate max-w-[120px]">
+                                        {{ Str::limit($task->description, 30) }}
+                                    </span>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="text-xl font-semibold mb-2 text-white">Brak zadań</p>
-                            <p class="text-gray-400 text-sm mb-6">Dodaj swoje pierwsze zadania</p>
-                        </div>
+                        @empty
+                            <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                                <div class="bg-gradient-to-br from-white/10 to-white/5 rounded-full p-8 mb-6 border border-white/10">
+                                    <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                    </svg>
+                                </div>
+                                <p class="text-xl font-semibold mb-2 text-white">Brak zadań na ten moment</p>
+                                <p class="text-gray-400 text-sm mb-6">Dodaj swoje pierwsze zadanie, aby śledzić postępy</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

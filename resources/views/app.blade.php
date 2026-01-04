@@ -8,7 +8,7 @@
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
     {{--font--}}
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
     </style>
     {{--sweet alerts--}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -16,13 +16,15 @@
 
 </head>
 <body class="bg-zinc-800 flex h-dvh w-full sm:pb-0">
-    <div id="sidebar"
-        class="fixed inset-y-0 left-0 z-50 lg:w-64 w-0 transform transition-transform duration-300 lg:relative lg:translate-x-0 lg:block-translate-x-full">
-        <x-sidebar/>
-    </div>
-    <main class="flex-1 px-4 overflow-auto">
+<div id="sidebar"
+     class="fixed inset-y-0 left-0 z-50 lg:w-64 w-0 transform transition-transform duration-300 lg:relative lg:translate-x-0 lg:block-translate-x-full">
+    <x-sidebar/>
+</div>
+<main class="flex-1 overflow-auto flex flex-col">
+    <div class="px-4 flex-grow mb-5">
         @yield('content')
-        <x-footer/>
-    </main>
+    </div>
+    <x-footer/>
+</main>
 </body>
 </html>

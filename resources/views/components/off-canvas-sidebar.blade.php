@@ -1,6 +1,6 @@
 <div class="flex grow flex-col gap-y-5 backdrop-blur-xl bg-white/5 border-r border-white/10 px-6 pb-4">
     <div class="flex h-16 shrink-0 items-center">
-        <p class="text-white text-xl font-bold">dziennik2</p>
+        <a href="{{ route('home') }}" class="text-white text-xl font-bold">dziennik2</a>
     </div>
 
     <nav class="flex flex-1 flex-col">
